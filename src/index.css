@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@keyframes wipe-right-to-left {
+  0% {
+    width: 100%;
+    right: 0;
+    left: auto;
+  }
+  100% {
+    width: 0%;
+    right: 0;
+    left: auto;
+  }
+}
+
+@keyframes vhs-tracking {
+  0% {
+    top: -25%;
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.45;
+  }
+  100% {
+    top: 125%;
+    opacity: 0.15;
+  }
+}
+
+@keyframes vhs-pulse-glow {
+  0%, 100% {
+    opacity: 0.95;
+    text-shadow: 0 0 6px rgba(56, 189, 248, 0.8), 0 0 12px rgba(56, 189, 248, 0.4);
+  }
+  50% {
+    opacity: 0.6;
+    text-shadow: 0 0 2px rgba(56, 189, 248, 0.4);
+  }
+}
+
+.vhs-scanlines {
+  /* Dark and light lines together so the effect shows on any tile color */
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.35) 0px,
+    rgba(0, 0, 0, 0.35) 1.5px,
+    rgba(255, 255, 255, 0.10) 1.5px,
+    rgba(255, 255, 255, 0.10) 2.5px,
+    transparent 2.5px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+/* Playing cue: a glow that breathes on top of the tile's own color */
+@keyframes cue-pulse {
+  0%, 100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.cue-pulse {
+  animation: cue-pulse 1.4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Paused cue: the PAUSED label slowly fades in and out */
+@keyframes paused-text-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.paused-text-pulse {
+  animation: paused-text-pulse 2.4s ease-in-out infinite;
+}
+
+.vhs-tracking-bar {
+  animation: vhs-tracking 5.5s linear infinite;
+  pointer-events: none;
+}
